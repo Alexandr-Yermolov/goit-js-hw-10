@@ -2,14 +2,12 @@ import './css/styles.css';
 import CountriesApiService from './js/fetchCountries';
 import countriesList from './templates/countries-list';
 import countryCard from './templates/country-card';
+import getRefs from './js/get-refs';
 
 const debounce = require('lodash.debounce');
 const DEBOUNCE_DELAY = 300;
-const refs = {
-  inputTag: document.getElementById('search-box'),
-  listTag: document.querySelector('.country-list'),
-  divTag: document.querySelector('.country-info'),
-};
+const refs = getRefs();
+
 
 refs.inputTag.addEventListener('input', debounce(onSearchCountries, DEBOUNCE_DELAY));
 const countriesApiService = new CountriesApiService();
