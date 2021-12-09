@@ -16,7 +16,7 @@ export default class DataFetch {
         }
         return countries;
       })
-      .catch(e => {
+      .catch(event => {
         Notiflix.Notify.failure(`"Oops, there is no country with that name"`);
       });
   }

@@ -2,7 +2,7 @@ import './css/styles.css';
 import CountriesApiService from './js/fetchCountries';
 import countriesList from './templates/countries-list';
 import countryCard from './templates/country-card';
-// =====================================================
+
 const debounce = require('lodash.debounce');
 const DEBOUNCE_DELAY = 300;
 const refs = {
@@ -10,20 +10,20 @@ const refs = {
   listTag: document.querySelector('.country-list'),
   divTag: document.querySelector('.country-info'),
 };
-// ======================================================
+
 refs.inputTag.addEventListener('input', debounce(onSearchCountries, DEBOUNCE_DELAY));
 const countriesApiService = new CountriesApiService();
 
-function onSearchCountries(e) {
+function onSearchCountries(event) {
   refs.listTag.innerHTML = '';
   refs.divTag.innerHTML = '';
-  countriesApiService.value = e.target.value.trim();
+  countriesApiService.value = event.target.value.trim();
 
   countriesApiService.fetchCountries().then(countries => {
     makeCountyCard(countries);
   });
 }
-// ======================================================
+
 function makeCountyCard(countries) {
   return countries.map(({ name, capital, population, flags, languages }) => {
     console.log({ languages });
