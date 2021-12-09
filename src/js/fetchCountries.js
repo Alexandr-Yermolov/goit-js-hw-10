@@ -1,11 +1,14 @@
 import Notiflix from 'notiflix';
+
+const BASE_URL = 'https://restcountries.com/v3.1/name/';
+
 export default class DataFetch {
   constructor() {
     this.inputValue = '';
     console.log(this.inputValue);
   }
-  fetchCountries() {
-    const URL = `https://restcountries.com/v3.1/name/${this.inputValue}?fields=name,capital,population,flags,languages,`;
+  fetchCountries() {    
+    const URL = `${BASE_URL}${this.inputValue}?fields=name,capital,population,flags,languages,`;
     return fetch(URL)
       .then(response => response.json())
       .then(countries => {
